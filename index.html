@@ -1,0 +1,153 @@
+<html>
+<style>
+    html,
+    body {
+        margin: 0px;
+        width: 100%;
+        font-family: 'arial';
+    }
+    
+    img {
+        width: 100vw;
+    }
+    
+    .colourp {
+        background-color: #eeeeee;
+        width: 700px;
+        max-width: 100vw;
+        margin: auto;
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+    }
+    
+    .playground {
+        background-color: #dedede;
+        width: 400px;
+        height: 400px;
+    }
+    
+    #col {
+        background-color: #dedede;
+    }
+    
+    .empty {
+        font-size: 50px;
+        margin: auto;
+        margin-top: 142.4px;
+        height: 115.2px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%
+    }
+    
+    #coli {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .c {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<title>
+    Hex Playgrgound
+</title>
+
+<body>
+    <img src="Untitled.svg">
+    <div class="colourp">
+        <div class="c">
+            <div> <b>Option 1 : </b><br>Enter A colour<br>
+                <input type="color" id="coli" placeholder="click me" value="#ffffff"> <br>
+                <br> <b>Option 2: </b><br>Enter R G B values<br>
+                <input value="0" id="red" type="number" style="width:70px;background-color: red;" min="0" max="256"><input value="0" id="green" type="number" style="width:70px;background-color: green;" min="0" max="256"><input value="0" id="blue" type="number"
+                    style="width:70px;background-color: blue;" min="0" max="256">
+                <br><br>
+                <b>Option 3:</b><br>Enter Hex<br> #
+                <input type="text" id="hex"></div>
+        </div>
+        <div class="playground" id="col">
+            <div class="empty"> Colour preview<br> goes here</div>
+        </div>
+    </div>
+</body>
+<script>
+    let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+    let div = document.getElementById('coli');
+    let pl = document.getElementById('col');
+    div.oninput = function() {
+        pl.innerHTML = '<div class="empty"> ' + document.getElementById('coli').value + '</div>'
+        pl.style.backgroundColor = document.getElementById('coli').value;
+    }
+    let red = document.getElementById('red')
+    let green = document.getElementById('green')
+    let blue = document.getElementById('blue')
+    let col
+    red.oninput = function() {
+
+        //red
+        var red1 = Math.trunc(red.value / 16)
+        var red2 = red.value % 16
+        var hred = hex[red1] + hex[red2]
+            //green
+        var green1 = Math.trunc(green.value / 16)
+        var green2 = green.value % 16
+        var hgreen = hex[green1] + hex[green2]
+            //blue
+        var blue1 = Math.trunc(blue.value / 16)
+        var blue2 = blue.value % 16
+        var hblue = hex[blue1] + hex[blue2]
+        col = hred + hgreen + hblue
+        pl.style.backgroundColor = hred + hgreen + hblue
+        pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+    }
+    green.oninput = function() {
+        pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+            //red
+        var red1 = Math.trunc(red.value / 16)
+        var red2 = red.value % 16
+        var hred = hex[red1] + hex[red2]
+            //green
+        var green1 = Math.trunc(green.value / 16)
+        var green2 = green.value % 16
+        var hgreen = hex[green1] + hex[green2]
+            //blue
+        var blue1 = Math.trunc(blue.value / 16)
+        var blue2 = blue.value % 16
+        var hblue = hex[blue1] + hex[blue2]
+        col = hred + hgreen + hblue
+        pl.style.backgroundColor = hred + hgreen + hblue
+        pl.innerHTML = '<div class="empty"># ' + col + '</div>'
+    }
+    blue.oninput = function() {
+        pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+            //red
+        var red1 = Math.trunc(red.value / 16)
+        var red2 = red.value % 16
+        var hred = hex[red1] + hex[red2]
+            //green
+        var green1 = Math.trunc(green.value / 16)
+        var green2 = green.value % 16
+        var hgreen = hex[green1] + hex[green2]
+            //blue
+        var blue1 = Math.trunc(blue.value / 16)
+        var blue2 = blue.value % 16
+        var hblue = hex[blue1] + hex[blue2]
+        col = hred + hgreen + hblue
+        pl.style.backgroundColor = hred + hgreen + hblue
+        pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+    }
+    let hexa = document.getElementById('hex')
+    hexa.oninput = function() {
+        col = hexa.value
+        pl.style.backgroundColor = col
+        pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+    }
+</script>
+
+</html>
