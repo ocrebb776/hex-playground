@@ -60,6 +60,7 @@
         width: 400px;
         height: 400px;
         border-radius: 0px 50px 50px 0px;
+        overflow: auto;
     }
     
     #col {
@@ -95,6 +96,7 @@
         padding: 5px;
         font-size: 20px;
         border-radius: 10px;
+        color: white;
     }
     
     input:hover {
@@ -143,7 +145,7 @@
                     style="width:70px;background-color: blue;" min="0" max="256">
                 <br><br>
                 <b>Option 3:</b><br>Enter Hex<br> #
-                <input type="text" id="hex"></div>
+                <input type="text" id="hex" style="color:black"></div>
         </div>
         <div class="playground" id="col">
             <div class="empty"> Empty :(</div>
@@ -162,7 +164,7 @@
                 , d , e , f , 10<br>
             </p>
             <p>
-                you might of noticed that colour codes have 6 characters, this is becase it represents 3 diferent values, Red , Green and Blue. <br># 1f 2b 51 <br># R G B <br> each colour has a value from 0 to 255. 0 means none ans 255 means bright.
+                you might of noticed that colour codes have 6 characters, this is becase it represents 3 diferent values, Red , Green and Blue. <br># 1f 2b 51 <br># R G B <br> each colour has a value from 0 to 255. 0 means off ans 255 means 100% brigness.
             </p>
             <p>
                 <table style="margin: auto;border-collapse: collapse;">
@@ -197,7 +199,20 @@
                         <td>white</td>
                     </tr>
                 </table>
-            </p><br>
+            </p>
+            <p>
+                256 = ff
+            </p>
+            <br>
+        </div>
+    </div><br><br>
+    <div class="colour p">
+        <div class="c">
+            <div>
+                <h2><b>Convert<br> base-10 to base-16<br>(hexadecimal)</b></h2><br><input type="number" min="0" max="65535" style="color:black" id="convert"> </div>
+        </div>
+        <div class="playground" id="conver">
+            <div class="empty"> Empty :(</div>
         </div>
     </div>
     <a href="https://linktr.ee/ocrebb"><img src="footer.svg"></a>
@@ -273,6 +288,43 @@
         col = hexa.value
         pl.style.backgroundColor = col
         pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+    }
+
+
+
+
+    //covert //
+    let p2 = document.getElementById('conver')
+    let con = document.getElementById('convert')
+    con.oninput = function() {
+        var left = con.value
+        let hexa = ''
+        let last = 0
+        if (left >= 655336) {
+            last = Math.trunc(left / 65536)
+            hexa += hex[last]
+            left -= last * 65536
+        }
+        if (left >= 4096) {
+            last = Math.trunc(left / 4096)
+            hexa += hex[last]
+            left -= last * 4096
+        }
+        if (left >= 256) {
+            last = Math.trunc(left / 256)
+            hexa += hex[last]
+            left -= last * 256
+        }
+        if (left >= 16) {
+            last = Math.trunc(left / 16)
+            hexa += hex[last]
+            left -= last * 16
+        }
+        last = left % 16
+        hexa += hex[last]
+
+        p2.style.backgroundColor = "00ffff"
+        p2.innerHTML = '<div class="empty"> ' + hexa + '</div>'
     }
 </script>
 
