@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div id="category">
 
     <div class="content" id="d">
@@ -21,4 +22,65 @@
     div.onmouseover = function() {
         this.style.backgroundColor = 'green';
     }
+=======
+<body>
+    <input id="convert">
+    <div id="conver"></div>
+</body>
+<script>
+    function reverseString(str) {
+
+        var splitString = str.split("");
+        var reverseArray = splitString.reverse();
+        var joinArray = reverseArray.join("");
+        return joinArray;
+    }
+    let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+
+    //covert //
+    let p2 = document.getElementById('conver')
+    let con = document.getElementById('convert')
+    con.oninput = function() {
+            var left = con.value
+            let hexa = ''
+            let last = 0
+            let cont = true
+            let xr
+            while (cont) {
+                cont = (Math.trunc(left / 16) > 15)
+                hexa += hex[left % 16]
+                left = Math.trunc(left / 16)
+                console.log(left)
+            }
+            hexa += hex[left]
+            hexa = reverseString(hexa)
+            p2.style.backgroundColor = "00ffff"
+            p2.innerHTML = '<div class="empty"> ' + hexa + '</div>'
+        }
+        /*
+        if (left % 16 == 0) {
+            var oneof = true
+            left += 1
+        }
+        let root = hexcon(left)
+        while (left > 0) {
+            last = Math.trunc(left / 16 ** root)
+            console.log(last)
+            hexa += hex[last]
+            left -= last * (16 ** root)
+            console.log(left)
+            root -= 1
+        }
+        if (oneof) {
+            console.log(hexa[hexa.length - 1])
+            hexa = hexa.slice(0, -1)
+            hexa += '0'
+            var hexab = hexa.substring(1)
+            hexa = '1' + hexab
+            console.log(hexa[hexa.length - 1])
+        }
+            */
+
+    // }
+>>>>>>> Stashed changes
 </script>

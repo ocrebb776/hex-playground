@@ -219,6 +219,16 @@
     <a href="https://linktr.ee/ocrebb"><img src="footer.svg"></a>
 </body>
 <script>
+<<<<<<< Updated upstream
+=======
+    function reverseString(str) {
+
+        var splitString = str.split("");
+        var reverseArray = splitString.reverse();
+        var joinArray = reverseArray.join("");
+        return joinArray;
+    }
+>>>>>>> Stashed changes
     let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
     let div = document.getElementById('coli');
     let pl = document.getElementById('col');
@@ -286,14 +296,51 @@
     }
     let hexa = document.getElementById('hex')
     hexa.oninput = function() {
+<<<<<<< Updated upstream
         col = hexa.value
         pl.style.backgroundColor = col
         pl.innerHTML = '<div class="empty"> #' + col + '</div>'
     }
+=======
+            col = hexa.value
+            pl.style.backgroundColor = col
+            pl.innerHTML = '<div class="empty"> #' + col + '</div>'
+        }
+        // convert updated
+    let p2 = document.getElementById('conver')
+    let con = document.getElementById('convert')
+    con.oninput = function() {
+            var left = con.value
+            let hexa = ''
+            let last = 0
+            let cont = true
+            let xr
+            if (left != '') {
+                if (left > 15) {
+                    while (cont) {
+                        cont = (Math.trunc(left / 16) > 15)
+                        hexa += hex[left % 16]
+                        left = Math.trunc(left / 16)
+                        console.log(left)
+                    }
+                }
+                hexa += hex[left]
+                hexa = reverseString(hexa)
+                p2.style.backgroundColor = "00ffff"
+                p2.innerHTML = '<div class="empty"> ' + hexa + '</div>'
+            } else {
+                p2.style.backgroundColor = 'dedede';
+                p2.innerHTML = '<div class="empty"> Empty :(</div>'
+            }
+
+        }
+        /*
+>>>>>>> Stashed changes
 
 
 
 
+<<<<<<< Updated upstream
     //covert //
     let p2 = document.getElementById('conver')
     let con = document.getElementById('convert')
@@ -326,6 +373,39 @@
 
         p2.style.backgroundColor = "00ffff"
         p2.innerHTML = '<div class="empty"> ' + hexa + '</div>'
+=======
+    //covertf //
+    let p3 = document.getElementById('converf')
+    let co = document.getElementById('convertf')
+    co.oninput = function() {
+        var left = co.value
+
+        if (left != '') {
+
+            let hexa = 0
+            hexa = hex.indexOf(left[left.length - 1].toLowerCase())
+            if (hexa < 0) {
+                hexa = 0
+            }
+            let num = 1
+            left = left.slice(0, -1)
+            while (left.length > 0) {
+                console.log(left)
+                hexa += hex.indexOf(left[left.length - 1].toLowerCase()) * 16 ** num
+                left = left.slice(0, -1)
+                num += 1
+            }
+            //hexa += hex.indexOf(left[left.length - 2]) * 16
+            // for (let i = left.length; i > 0; i--) {
+            // }
+
+            p3.style.backgroundColor = "00ffff"
+            p3.innerHTML = '<div class="empty"> ' + String(hexa) + '</div>'
+        } else {
+            p3.style.backgroundColor = 'dedede';
+            p3.innerHTML = '<div class="empty"> Empty :(</div>'
+        }
+>>>>>>> Stashed changes
     }
 </script>
 
