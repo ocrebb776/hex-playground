@@ -210,17 +210,24 @@
     <div class="colour p">
         <div class="c">
             <div>
-                <h2><b>Convert<br> base-10 to base-16<br>(hexadecimal)</b></h2><br><input type="number" min="0" max="65535" style="color:black" id="convert"> </div>
+                <h2><b>Convert<br> base-10 to base-16<br>(hexadecimal)</b></h2><br><input type="number" min="0" style="color:black" id="convert"> </div>
         </div>
         <div class="playground" id="conver">
+            <div class="empty"> Empty :(</div>
+        </div>
+    </div><br><br>
+    <div class="colour p">
+        <div class="c">
+            <div>
+                <h2><b>Convert<br> base-16(hex) to base-10</b></h2><br><input min="0" style="color:black" id="convertf"> </div>
+        </div>
+        <div class="playground" id="converf">
             <div class="empty"> Empty :(</div>
         </div>
     </div>
     <a href="https://linktr.ee/ocrebb"><img src="footer.svg"></a>
 </body>
 <script>
-<<<<<<< Updated upstream
-=======
     function reverseString(str) {
 
         var splitString = str.split("");
@@ -228,7 +235,6 @@
         var joinArray = reverseArray.join("");
         return joinArray;
     }
->>>>>>> Stashed changes
     let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
     let div = document.getElementById('coli');
     let pl = document.getElementById('col');
@@ -296,12 +302,6 @@
     }
     let hexa = document.getElementById('hex')
     hexa.oninput = function() {
-<<<<<<< Updated upstream
-        col = hexa.value
-        pl.style.backgroundColor = col
-        pl.innerHTML = '<div class="empty"> #' + col + '</div>'
-    }
-=======
             col = hexa.value
             pl.style.backgroundColor = col
             pl.innerHTML = '<div class="empty"> #' + col + '</div>'
@@ -335,45 +335,48 @@
 
         }
         /*
->>>>>>> Stashed changes
 
+            //covert //
+            let p2 = document.getElementById('conver')
+            let con = document.getElementById('convert')
+            con.oninput = function() {
+                var left = con.value
+                let hexa = ''
+                let last = 0
+                if (left >= 10485376) {
+                    last = Math.trunc(left / (65536 * 16))
+                    hexa += hex[last]
+                    left -= last * 65536 * 16
+                }
+                if (left >= 655336) {
+                    last = Math.trunc(left / 65536)
+                    hexa += hex[last]
+                    left -= last * 65536
+                }
+                if (left >= 4096) {
+                    last = Math.trunc(left / 4096)
+                    hexa += hex[last]
+                    left -= last * 4096
+                }
+                if (left >= 256) {
+                    last = Math.trunc(left / 256)
+                    hexa += hex[last]
+                    left -= last * 256
+                }
+                if (left >= 16) {
+                    last = Math.trunc(left / 16)
+                    hexa += hex[last]
+                    left -= last * 16
+                }
+                last = left % 16
+                hexa += hex[last]
 
+                p2.style.backgroundColor = "00ffff"
+                p2.innerHTML = '<div class="empty"> ' + hexa + '</div>'
+            }
 
+        */
 
-<<<<<<< Updated upstream
-    //covert //
-    let p2 = document.getElementById('conver')
-    let con = document.getElementById('convert')
-    con.oninput = function() {
-        var left = con.value
-        let hexa = ''
-        let last = 0
-        if (left >= 655336) {
-            last = Math.trunc(left / 65536)
-            hexa += hex[last]
-            left -= last * 65536
-        }
-        if (left >= 4096) {
-            last = Math.trunc(left / 4096)
-            hexa += hex[last]
-            left -= last * 4096
-        }
-        if (left >= 256) {
-            last = Math.trunc(left / 256)
-            hexa += hex[last]
-            left -= last * 256
-        }
-        if (left >= 16) {
-            last = Math.trunc(left / 16)
-            hexa += hex[last]
-            left -= last * 16
-        }
-        last = left % 16
-        hexa += hex[last]
-
-        p2.style.backgroundColor = "00ffff"
-        p2.innerHTML = '<div class="empty"> ' + hexa + '</div>'
-=======
     //covertf //
     let p3 = document.getElementById('converf')
     let co = document.getElementById('convertf')
@@ -381,7 +384,7 @@
         var left = co.value
 
         if (left != '') {
-
+            console.log(left)
             let hexa = 0
             hexa = hex.indexOf(left[left.length - 1].toLowerCase())
             if (hexa < 0) {
@@ -405,7 +408,6 @@
             p3.style.backgroundColor = 'dedede';
             p3.innerHTML = '<div class="empty"> Empty :(</div>'
         }
->>>>>>> Stashed changes
     }
 </script>
 
